@@ -15,3 +15,5 @@ public interface Type<T> {
 The `getReturnedClass` return the `Class` object which represents the type `T`. The marshall and unmarshall methods take care of marshalling and unmarshalling.
 
 To write your own, look at the `URLType` as an example.
+
+You can also check out [http://adityagore.blogspot.com/2007/10/user-defined-types-with-jsonmarshaller.html Of this and that!] blog for an more detailed explanation.
