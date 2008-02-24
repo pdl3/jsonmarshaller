@@ -33,7 +33,7 @@ and from an instance of a book, build the JSON object
              {"firstName": "Pascal",  "lastName": "Perez"}]}
 }}}
 
-or vice-versa: you have a JSON representation and wish to create Java instances automatically from it. JsonMarshaller offers exactly that.
+or vice-versa: you have a JSON representation and wish to create Java instances automatically from it. !JsonMarshaller offers exactly that.
 
 {{{
 Book vocationCreateurs = ...;
@@ -49,4 +49,31 @@ Marshaller<Book> m = Marshaller.create(Book.class);
 Book vocationCreateurs = m.unmarshall(o);
 }}}
 
+==Entities==
+
+Entities represent the domain model. They are objects holding data, such as `Book`, `Auhtor`, `User`, or `Account`. On the other hand, an !InpusStream object for instance, represents computation.
+
+To work with the !JsonMarshaller, your entities should provide a no argument constructor. This allows the marshaller to create fresh instances and populate them.
+
+==Annotations==
+
+The !JsonMarshaller uses two annotations to describe entities: `@Entity` and `@Value`.
+
+As we have seen
+
+{{{
+@Entity
+class Book {
+}}}
+
+the `@Entity` annotates a class and informs the marshaller that it is a JSON entity. Again, entities should have a no argument constructor.
+
+The second annotation
+
+{{{
+  @Value
+  String firstName;
+}}}
+
+informs the marshaller that the field should be persisted to JSON. Non annotated fields are considered transient (will not be persisted).
 Everything needed is automatically inferred from the bytecode of the Book class!
