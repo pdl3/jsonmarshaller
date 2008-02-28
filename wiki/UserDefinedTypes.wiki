@@ -1,4 +1,4 @@
-#summary One-sentence summary of this page.
+#summary tutorial on creating user defined types
 
 = User Defined Types =
 
