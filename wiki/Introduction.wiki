@@ -1,4 +1,5 @@
 #summary quick introduction to the library
+#labels Featured
 
 = Introduction =
 
