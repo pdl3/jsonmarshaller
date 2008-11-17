@@ -38,7 +38,7 @@ or vice-versa: you have a JSON representation and wish to create Java instances 
 
 {{{
 Book vocationCreateurs = ...;
-Marshaller<Book> m = Marshaller.create(Book.class);
+Marshaller<Book> m = TwoLattes.createMarshaller(Book.class);
 JSONObject o = m.marshall(vocationCreateurs);
 }}}
 
@@ -46,7 +46,7 @@ and
 
 {{{
 JSONObject o = ...;
-Marshaller<Book> m = Marshaller.create(Book.class);
+Marshaller<Book> m = TwoLattes.createMarshaller(Book.class);
 Book vocationCreateurs = m.unmarshall(o);
 }}}
 
