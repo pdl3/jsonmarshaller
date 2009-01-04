@@ -1,5 +1,6 @@
 #summary quick introduction to the library
 #labels Featured
+#sidebar TableOfContents
 
 = Introduction =
 
@@ -52,7 +53,7 @@ Book vocationCreateurs = m.unmarshall(o);
 
 ==Entities==
 
-Entities represent the domain model. They are objects holding data, such as `Book`, `Auhtor`, `User`, or `Account`. On the other hand, an !InpusStream object for instance, represents computation.
+Entities represent the domain model. They are objects holding data, such as `Book`, `Author`, `User`, or `Account`. On the other hand, an !InputStream object for instance, represents computation.
 
 To work with the !JsonMarshaller, your entities should provide a no argument constructor. This allows the marshaller to create fresh instances and populate them.
 
@@ -77,4 +78,33 @@ The second annotation
 }}}
 
 informs the marshaller that the field should be persisted to JSON. Non annotated fields are considered transient (will not be persisted).
-Everything needed is automatically inferred from the bytecode of the Book class!
+Everything needed is automatically inferred from the bytecode of the Book class! 
+
+Please see the [http://code.google.com/p/jsonmarshaller/wiki/Options options documentation] for more details on using these annotations. 
+
+=Built in Type Support=
+`JsonMarshaller` supports all base types, their corresponding wrapper classes, String and Enum types. To (un)marshall user defined types please refer to the UserDefinedTypes tutorial.
+
+==Enum Support==
+Because the library has built in support for enum types, no `@Entity` annotation is needed in the type definition. If we have an enum type `Abc`
+
+{{{
+enum Abc {
+  A, B, C;
+}
+}}}
+
+and an entity `Foo`
+
+{{{
+@Entity
+class Foo {
+  @Value
+  private Abc abc = Abc.A;
+}
+}}}
+This will marshall into the expected JSON representation `{"abc": "A"}` and vice-versa. 
+
+If your enum type has other fields they will simply be ignored. This is due to the fact that run-time instantiation of enum types is forbidden by the JVM. 
+
+See the [http://code.google.com/p/jsonmarshaller/wiki/Options options documentation] for information on using the ordinal value in place of the enum constant.
