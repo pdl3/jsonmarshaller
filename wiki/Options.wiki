@@ -133,3 +133,21 @@ class Address {
 The name field will be marshalled in the full and simple views, whereas the url field will only be marshalled in the full view.
 
 To specify the view of an entity to take when marshalling or unmarshalling, please look out the updated interface of the `Marshaller`.
+
+==`ordinal` option==
+
+This flag is for fields of type enum. The `ordinal = true` flag may be used in the `@Value` annotation to indicate that the integer ordinal value of the enum constant should be used in the JSON representation. e.g.
+
+{{{
+
+enum Abc { A, B, C }
+
+@Entity
+class Foo {
+  @Value(ordianal = true)
+  private Abc abc = Abc.A;
+  ...
+}
+}}}
+
+will marshall to `{"abc":0}`. This gives a more compact JSON object but is vulnerable to constant reordering in the enum type definition.
