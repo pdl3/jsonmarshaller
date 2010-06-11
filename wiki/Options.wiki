@@ -117,7 +117,7 @@ here the `URL` is a value yet we cannot marshall and unmarshall it without addit
 
 ==`views` option==
 
-Do you happen to have complex entities which need to be marshalled once with a set of fields, and in another situation with other fields? Views allow you to specify different waays to marshall entities. The views option takes a String array as parameter which are the views in which a field ought to be included. Consider the `Address` class.
+Do you happen to have complex entities which need to be marshalled once with a set of fields, and in another situation with other fields? Views allow you to specify different ways to marshall entities. The views option takes a String array as parameter which are the views in which a field ought to be included. Consider the `Address` class.
 
 {{{
 @Entity
